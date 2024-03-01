@@ -10,8 +10,7 @@ public:
                 rem = n % 2;
                 rem = rem ^ 1;
                 n /= 2;
-                // if (ans > INT_MAX / 10 || ans < INT_MIN / 10)
-                //     return 0;
+                
                 ans = ans + rem * mul;
                 mul = mul * 2;
             }
