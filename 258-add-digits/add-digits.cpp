@@ -2,10 +2,7 @@ class Solution {
 public:
     int addDigits(int num) {
         int ans,rem;
-        if(num<10)
-        return num;
-        else{
-            while(num>=10){
+            while(num>9){
                 ans=0;
                 while(num!=0){
                     rem=num%10;
@@ -14,8 +11,7 @@ public:
                 }
                 num=ans;
             }
-        } 
 
-        return ans;
+           return num;
     }
 };
