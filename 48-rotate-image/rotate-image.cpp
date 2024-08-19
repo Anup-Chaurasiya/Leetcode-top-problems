@@ -11,7 +11,12 @@ public:
         }
 
         for(int i=0;i<row;i++){
-        reverse(matrix[i].begin(),matrix[i].end());
+            int s=0,e=col-1;
+            while(s<e){
+                swap(matrix[i][s],matrix[i][e]);
+                s++;
+                e--;
+            }
         }
 
     }
