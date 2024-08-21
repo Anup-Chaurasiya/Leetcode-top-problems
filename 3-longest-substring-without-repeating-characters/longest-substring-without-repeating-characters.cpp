@@ -1,6 +1,9 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
+
+        // sliding window based problem
+
         vector<bool>count(255,0);
         int first = 0,second=0,length=0;
         while(second<s.size()){
