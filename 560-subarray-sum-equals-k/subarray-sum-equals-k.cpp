@@ -1,24 +1,20 @@
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
-        map<int,int>mp;
-        int count=0;
-        mp.insert({0,1});
-        int sum=0;
-        for(int i=0;i<nums.size();i++){
-            sum +=nums[i];
+        map<int, int> mp;
+        int count = 0;
+        int sum = 0;
 
-            auto it = mp.find(sum-k);
+        mp[0] = 1;
 
-            if(it != mp.end())
-              count +=it->second;
-
-              it = mp.find(sum);
-            if(it!=mp.end())
-                it->second++;
-            else 
-            mp.insert({sum,1});
+        for (int i = 0; i < nums.size(); i++) {
+            sum += nums[i];
+            if (mp.find(sum - k) != mp.end()) {
+                count += mp[sum - k];
+            }
+            mp[sum]++;
         }
+
         return count;
     }
 };
