@@ -16,17 +16,12 @@ public:
     ListNode * fast=head->next;
     while(fast!=NULL && fast->next!=NULL ){
         slow=slow->next;
-        fast=fast->next;
-        if(fast->next!=NULL){
-            fast=fast->next;
-        }
+        fast=fast->next->next;
         if(slow==fast){
         return true;
         }
     }
-    
-    
-        return false;
+    return false;
     
 
     }
