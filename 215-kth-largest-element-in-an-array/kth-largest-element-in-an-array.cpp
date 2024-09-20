@@ -1,19 +1,23 @@
 #include<queue>
 class Solution {
 public:
-    int findKthLargest(vector<int>& nums, int k) {
+    int findKthLargest(vector<int>& arr, int k) {
         
-        int n=nums.size();
+        int n=arr.size();
 
         priority_queue<int , vector<int> , greater<int>> q;
-
-        for(int i=0;i<n;i++){
-            q.push(nums[i]);
-            if(q.size()>k){
+        
+        for(int i=0;i<k;i++){
+            q.push(arr[i]);
+        }
+        
+        for(int i=k;i<n;i++){
+            if(arr[i]>q.top()){
                 q.pop();
+                q.push(arr[i]);
             }
         }
-      return q.top();
+        return q.top();
        
     }
 };
