@@ -1,7 +1,3 @@
-#include <algorithm>  // For max
-
-using namespace std;
-
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -14,31 +10,28 @@ using namespace std;
  * };
  */
 class Solution {
-private:
-    // Helper function to find diameter and height
-    pair<int, int> diameterFind(TreeNode* root) {
-        if (root == nullptr) {
-            return {0, 0}; // {diameter, height}
-        }
-
-        auto left = diameterFind(root->left);
-        auto right = diameterFind(root->right);
-
-        int leftDiameter = left.first;
-        int rightDiameter = right.first;
-        int leftHeight = left.second;
-        int rightHeight = right.second;
-
-        int currentDiameter = leftHeight + rightHeight; // Path through the current node
-        int currentHeight = max(leftHeight, rightHeight) + 1; // Height of the current node
-
-        int diameter = max(currentDiameter, max(leftDiameter, rightDiameter));
-
-        return {diameter, currentHeight};
-    }
-
 public:
+
+pair<int,int> diameterTree(TreeNode * root){
+
+    if(root==NULL) return {0,0};
+
+    pair<int,int>left = diameterTree(root->left);
+    pair<int,int>right = diameterTree(root->right);
+
+    int op1 = left.first;
+    int op2 = right.first;
+    int op3 = left.second + right.second ;
+
+    int currHeight = max(left.second , right.second) + 1;
+
+    int ans = max(op1 , max(op2 , op3));
+
+    return {ans,currHeight};
+}
+
     int diameterOfBinaryTree(TreeNode* root) {
-        return diameterFind(root).first;
+        
+        return diameterTree(root).first;
     }
 };
