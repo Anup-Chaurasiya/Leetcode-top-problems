@@ -1,22 +1,22 @@
 class Solution {
 public:
+
+int climbingDp(int n,vector<int>&dp){
+    if(n<=2){
+        return n;
+    }
+
+    if(dp[n] != -1){
+        return dp[n];
+    }
+
+    return dp[n] = climbingDp(n-1,dp) + climbingDp(n-2,dp); 
+}
+
+
     int climbStairs(int n) {
-         if(n<=2){
-            return n;
-         }
+        vector<int>dp(n+1,-1);
 
-        //  return climbStairs(n-1)+climbStairs(n-2);
-        // another method to solve 
-        // DP 
-        int pre1=1;
-        int pre2=2;
-
-        for(int i=3;i<=n;i++){
-            int curr=pre1+pre2;
-            pre1=pre2;
-            pre2=curr;
-        }
-
-        return pre2;
+        return climbingDp(n,dp);
     }
 };
