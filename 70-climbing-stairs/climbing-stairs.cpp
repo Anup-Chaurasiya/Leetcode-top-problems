@@ -13,20 +13,22 @@ int climbingDp(int n,vector<int>&dp){
     return dp[n] = climbingDp(n-1,dp) + climbingDp(n-2,dp); 
 }
 
-int climbTailDp(int n ,vector<int>&dp){
+int climbTailDp(int n){
     
     if(n<=2){
         return n;
     }
 
-    dp[1]=1;
-    dp[2]=2;
+    int pre2=1;
+    int pre1=2;
 
     for(int i=3;i<=n;i++){
-        dp[i] = dp[i-1] + dp[i-2];
+        int curr = pre2 + pre1;
+        pre2=pre1;
+        pre1=curr;
     }
 
-    return dp[n];
+    return pre1;
 }
 
     int climbStairs(int n) {
@@ -34,6 +36,6 @@ int climbTailDp(int n ,vector<int>&dp){
 
         // return climbingDp(n,dp);
 
-        return climbTailDp(n,dp);
+        return climbTailDp(n);
     }
 };
