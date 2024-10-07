@@ -13,16 +13,18 @@ int fibDp(int n,vector<int>&dp){
     return dp[n] = fibDp(n-1,dp) + fibDp(n-2,dp);
 }
 
-int fibTail(int n,vector<int>&dp){
+int fibTail(int n){
     if(n<=1) return n;
-    dp[0]=0;
-    dp[1]=1;
+    int pre2=0;
+    int pre1=1;
 
     for(int i=2;i<=n;i++){
-        dp[i] = dp[i-1] + dp[i-2];
+        int curr = pre2 + pre1 ;
+        pre2 = pre1;
+        pre1 = curr;
     }
 
-    return dp[n];
+    return pre1;
 }
 
 
@@ -30,7 +32,7 @@ int fibTail(int n,vector<int>&dp){
         vector<int>dp(n+1);
         // return fibDp(n,dp);
 
-        return fibTail(n,dp);
+        return fibTail(n);
 
     }
 };
