@@ -1,22 +1,24 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-
-        // sliding window based problem
-
+        int i =0,j=0;
+        int lenth=0;
         vector<bool>count(255,0);
-        int first = 0,second=0,length=0;
-        while(second<s.size()){
-            
-            while(count[s[second]]){
-                count[s[first]]=0;
-                first++;
-            }
-            count[s[second]]=1;
-            length=max(length,second-first+1);
-            second++;
 
+        while(j<s.size()){
+
+            if(count[s[j]]==0){
+                count[s[j]]=1;
+                lenth =max(lenth,j-i+1);
+                j++;
+            }
+            else{
+                while(count[s[j]]){
+                    count[s[i]]=0;
+                    i++;
+                }
+            }
         }
-        return length;
+        return lenth;
     }
 };
