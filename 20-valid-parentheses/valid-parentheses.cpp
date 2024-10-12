@@ -3,27 +3,30 @@ public:
     bool isValid(string s) {
         stack<char>st;
         for(int i=0;i<s.size();i++){
-            char ch=s[i];
+            char ch = s[i];
 
-            if(ch=='('||ch=='{'||ch=='['){
+            if(ch=='(' || ch=='{' || ch=='['){
                 st.push(ch);
             }
-            else 
+            else
             if(!st.empty()){
-                if(ch==')'&&st.top()=='('||ch=='}'&&st.top()=='{'||ch==']'&&st.top()=='['){
+                char t = st.top();
+                if((ch==')' && t=='(') || (ch=='}' && t=='{') || (ch==']' && t=='[')){
                     st.pop();
                 }
                 else{
                     return false;
                 }
-            }else{
-                return false;
+            }
+            else{
+                return false ;
             }
         }
+
         if(st.empty()){
             return true;
         }
-        else{
+        else {
             return false;
         }
     }
