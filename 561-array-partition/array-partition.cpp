@@ -1,7 +1,7 @@
 class Solution {
 public:
     int arrayPairSum(vector<int>& nums) {
-         unordered_map<int,int>mpp;
+        unordered_map<int,int>mpp;
 
        int minValue = INT_MAX; 
        int maxValue = INT_MIN; 
