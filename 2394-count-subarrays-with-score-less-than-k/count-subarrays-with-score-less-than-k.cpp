@@ -5,23 +5,19 @@ public:
         long long product;
         long long count=0;
         long long sum=0;
-
         while(e<nums.size()){
-            sum +=nums[e];
+            sum  +=nums[e];
             product = sum * (e-s+1);
 
-            while(product >=k && s<=e){
-                sum -= nums[s];
+            while(product >= k && s<=e){
+                sum -=nums[s];
                 s++;
                 product = sum * (e-s+1);
-
             }
-
-            count += e-s+1;
+            count += (e-s+1);
             e++;
 
         }
-
-        return count;
+        return count ;
     }
 };
