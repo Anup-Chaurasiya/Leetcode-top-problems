@@ -11,7 +11,7 @@ public:
                 total +=mp[sum-k];
                 mp[sum]++;
             }else{
-                mp[sum] +=1;
+                mp[sum]++;
             }
         }
         return total;
