@@ -1,41 +1,36 @@
 class Solution {
     private:
-    bool isVowel(char c) {
-    switch (c) {
+    bool isVowel(char ch){
+        switch(ch){
         case 'a':
         case 'e':
         case 'i':
         case 'o':
         case 'u':
-        case 'A':
-        case 'E':
-        case 'I':
-        case 'O':
-        case 'U':
             return true;
         default:
             return false;
+        }
     }
-}
 public:
     int maxVowels(string s, int k) {
-        int count=0,ans=0;
-        for(int i=0;i<k;i++){
-            if(isVowel(s[i]))
+        int i =0,j=0;
+        int count  = 0 ;
+        int maxi = INT_MIN;
+
+        while(j<s.size()){
+            if(isVowel(s[j]))
             count++;
-        }
 
-        ans=count;
-        for(int i=k;i<s.size();i++){
-            if(isVowel(s[i])){
-                count++;
+            if(j-i+1 == k){
+                maxi = max(maxi,count);
+                if(isVowel(s[i])){
+                    count--;
+                }
+                i++;
             }
-            if(isVowel(s[i-k]))
-            count--;
-
-            ans=max(ans,count);
-        }
-
-        return ans;
+            j++;
+        } 
+        return maxi;
     }
 };
