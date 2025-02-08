@@ -1,20 +1,19 @@
 class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
-        int prefix = 1 ; 
-        int size = nums.size();
-        vector<int>ans(size);
-        for(int i=0;i<size;i++){
-            ans[i] = prefix;
-            prefix *= nums[i]; 
-        } 
-
-        int postfix=1;
-        for(int i=size-1;i>=0;i--){
-            ans[i] *= postfix;
-            postfix *= nums[i];
+        int pre = 1;
+        vector<int> prefix(nums.size()) ;
+        vector<int> postfix(nums.size()) ; 
+        for(int i = 0 ; i<nums.size();i++){
+            prefix[i] = pre;
+            pre *= nums[i];
         }
-        
-        return ans;
+
+        int post  = 1;
+        for(int i = nums.size()-1; i >=0 ; i--){
+            postfix[i] = post * prefix[i];
+            post *= nums[i]; 
+        }
+        return postfix;
     }
 };
