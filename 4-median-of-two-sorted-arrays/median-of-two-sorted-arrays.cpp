@@ -28,15 +28,14 @@ public:
         }
         else{
             return ans[n/2];
-        
-
         }
+    }
 
     
 
         // Ensure nums1 is the smaller array to minimize the binary search range
         
-    //     if (nums1.size() > nums2.size()) {
+    //     if(nums1.size() > nums2.size()) {
     //         return findMedianSortedArrays(nums2, nums1);
     //     }
         
@@ -69,10 +68,10 @@ public:
     //             low = partition1 + 1;
     //         }
     //     }
-
-    //     // If input arrays are not sorted or something goes wrong, throw an exception
-    //     throw invalid_argument("Input arrays are not sorted or invalid input.");
-    // 
-    }
+    //     return -1;
+    // }
+    // //     // If input arrays are not sorted or something goes wrong, throw an exception
+    // //     throw invalid_argument("Input arrays are not sorted or invalid input.");
+    // //
 
 };
