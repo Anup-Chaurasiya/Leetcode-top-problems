@@ -1,35 +1,22 @@
 class Solution {
-
-private:
-
-   void findSubsetDup(vector<int>& nums,int index,vector<int>sub, vector<vector<int>> &result,int n){
-        if(index==n){
-            result.push_back(sub);
+public:
+    void findsubset(int index,vector<int>&nums,vector<vector<int>>&ans,vector<int>&pair){
+        if(index==nums.size()){
+            ans.push_back(pair);
             return ;
         }
-
-        sub.push_back(nums[index]);
-        findSubsetDup(nums,index+1,sub,result,n);
-        sub.pop_back();
-        while(index+1<n && nums[index]==nums[index+1]) index++;
-        findSubsetDup(nums,index+1,sub,result,n);
-
+        pair.push_back(nums[index]);
+        findsubset(index+1,nums,ans,pair);
+        pair.pop_back();
+        while(index+1 < nums.size() && nums[index]==nums[index+1]) index++;
+        findsubset(index+1,nums,ans,pair);
     }
 
-
-
-
-public:
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
         sort(nums.begin(),nums.end());
-        vector<vector<int>>result;
-        int n=nums.size();
-        vector<int>sub;
-        findSubsetDup(nums,0,sub,result,n);
-        sort(result.begin(),result.end());
-
-
-        return result;
-
+        vector<vector<int>>ans;
+        vector<int>pair;
+        findsubset(0,nums,ans,pair);
+        return ans;
     }
 };
