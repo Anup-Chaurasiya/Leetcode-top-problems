@@ -1,18 +1,18 @@
 class Solution {
 public:
     int jump(vector<int>& nums) {
-        int jump = 0 ;
-        int currentIndex = 0;
-        int maxIndex  = 0;
+        int steps=0;
+        int maxIndex=0;
+        int current =0;
+        for(int i=0;i<nums.size()-1;i++){
+            maxIndex= max(maxIndex, i+nums[i]);
 
-        for(int  i = 0;i<nums.size()-1;i++){
-            maxIndex = max(maxIndex, i+nums[i]);
-
-            if(i==currentIndex){
-                jump++;
-                currentIndex = maxIndex;
+            if(i == current){
+                steps++;
+                current = maxIndex;
             }
         }
-        return jump;
+
+        return steps;
     }
 };
