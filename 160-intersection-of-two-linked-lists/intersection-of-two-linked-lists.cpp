@@ -19,7 +19,7 @@ public:
             b = b ? b->next : headA;
         }
 
-        return b;
+        return a;
 
     }
 };
